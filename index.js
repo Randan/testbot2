@@ -26,5 +26,5 @@ cron.schedule('10 1 * * *', () => {
   bot.sendMessage(process.env.CHAT_ID, '/pidor@SublimeBot');
 }, {
   scheduled: true,
-  timezone: TIMEZONE
+  timezone: process.env.TIMEZONE
 });
