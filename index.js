@@ -39,7 +39,6 @@ bot.onText(/\/whoAmI/, msg => {
     + `${first_name}\n`
     + `${last_name}\n`
     + `${username}\n`
-    + "```"+ msg +"```"
   );
   console.log(`${nowTime()} ${first_name} ${last_name} (${username}) [${id}] asked for help`);
   console.log(msg);
