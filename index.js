@@ -13,10 +13,12 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   const { from, chat } = msg;
 
-  from.id === process.env.NIKITA_ID && bot.sendMessage(chat.id, getAbusePhrase());
+  from.id === process.env.ABUSE_TARGET_ID && bot.sendMessage(chat.id, getAbusePhrase());
 
   bot.sendMessage(process.env.ROOT_ID, `${from.first_name} ${from.last_name} (@${from.username}) [${from.id}]`);
 });
+
+console.log(getChatMember(process.env.CHAT_ID));
 
 bot.on('polling_error', msg => console.log(msg));
 
