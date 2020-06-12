@@ -7,51 +7,23 @@ const express = require("express");
 const app = express();
 const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 
+let nikitasIdSended = false;
+
 bot.on('message', msg => {
-  console.log(msg);
   const { from, chat } = msg;
-  from.username === 'Randan'
+
+  from.username === 'visocky_n'
     && bot.sendMessage(
       chat.id,
-      `Ты пидор, @${from.first_name}!`
+      `Ты пидор, ${from.first_name}!`
     );
+
+  if (!nikitasIdSended && from.username === 'visocky_n') {
+    bot.sendMessage('71632410', `ID Никиты - ${from.id}`);
+    nikitasIdSended = true;
+  }
 });
 
 bot.on("polling_error", msg => console.log(msg));
-// bot.onText(/\/help/, msg => {
-//   const { id, first_name, last_name, username } = msg.from;
-
-//   bot.sendMessage(
-//     id,
-//     `Hello, ${first_name}! And Fuck you!\n`
-//   );
-// });
-
-// bot.onText(/\/whoAmI/, msg => {
-//   const { id, first_name, last_name, username } = msg.from;
-
-//   bot.sendMessage(
-//     id,
-//     `Hello, ${first_name}! And Fuck you!\n`
-//     + `You are\n`
-//     + `${id}\n`
-//     + `${first_name}\n`
-//     + `${last_name}\n`
-//     + `${username}\n`
-//   );
-// });
-
-// bot.onText(/\/buttons/, function (msg) {
-//   const opts = {
-//     reply_to_message_id: msg.message_id,
-//     reply_markup: JSON.stringify({
-//       keyboard: [
-//         ['first button'],
-//         ['second button']
-//       ]
-//     })
-//   };
-//   bot.sendMessage(msg.chat.id, 'Buttons?', opts);
-// });
 
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
