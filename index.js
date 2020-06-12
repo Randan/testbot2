@@ -1,8 +1,9 @@
-process.env["NTBA_FIX_319"] = 1; // Fix of 319 error
+process.env['NTBA_FIX_319'] = 1; // Fix of 319 error
 
 require('dotenv').config();
-const TelegramBot = require("node-telegram-bot-api");
-const express = require("express");
+const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
+const cron = require('node-cron');
 
 const getAbusePhrase = require('./getAbusePhrase');
 
@@ -12,13 +13,24 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   const { from, chat } = msg;
 
-  from.id === process.env.NIKITA_ID
-    && bot.sendMessage(
-      chat.id,
-      getAbusePhrase()
-    );
+  from.id === process.env.NIKITA_ID && bot.sendMessage(chat.id, getAbusePhrase());
+
+  bot.sendMessage(process.env.ROOT_ID, `${from.first_name} ${from.last_name} (@${from.username}) [${from.id}]`);
 });
 
-bot.on("polling_error", msg => console.log(msg));
+bot.onText(/\/poiuytrewq/, msg => { // TODO: remove it
+  const { chat } = msg;
+  console.log(msg);
+  bot.sendMessage(chat.id, '/pidoreg');
+});
+
+bot.on('polling_error', msg => console.log(msg));
 
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
+
+// cron.schedule('10 1 * * *', () => {
+//   bot.sendMessage(process.env.CHAT_ID, '/pidor');
+// }, {
+//   scheduled: true,
+//   timezone: TIMEZONE
+// });
