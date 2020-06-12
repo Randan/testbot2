@@ -10,7 +10,7 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   console.log(msg);
   const { from, chat } = msg;
-  username === 'randan'
+  from.username === 'Randan'
     && bot.sendMessage(
       chat.id,
       `Ты пидор, ${from.first_name}!`
