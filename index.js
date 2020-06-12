@@ -44,4 +44,17 @@ bot.onText(/\/whoAmI/, msg => {
   console.log(msg);
 });
 
+bot.onText(/\/buttons/, function (msg) {
+  const opts = {
+    reply_to_message_id: msg.message_id,
+    reply_markup: JSON.stringify({
+      keyboard: [
+        ['first button'],
+        ['second button']
+      ]
+    })
+  };
+  bot.sendMessage(msg.chat.id, 'Buttons?', opts);
+});
+
 app.listen(PORT, () => console.log(`Server works on ${PORT}`));
