@@ -18,19 +18,13 @@ bot.on('message', msg => {
   bot.sendMessage(process.env.ROOT_ID, `${from.first_name} ${from.last_name} (@${from.username}) [${from.id}]`);
 });
 
-bot.onText(/\/poiuytrewq/, msg => { // TODO: remove it
-  const { chat } = msg;
-  console.log(msg);
-  bot.sendMessage(chat.id, '/pidoreg');
-});
-
 bot.on('polling_error', msg => console.log(msg));
 
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
 
-// cron.schedule('10 1 * * *', () => {
-//   bot.sendMessage(process.env.CHAT_ID, '/pidor');
-// }, {
-//   scheduled: true,
-//   timezone: TIMEZONE
-// });
+cron.schedule('10 1 * * *', () => {
+  bot.sendMessage(process.env.CHAT_ID, '/pidor@SublimeBot');
+}, {
+  scheduled: true,
+  timezone: TIMEZONE
+});
