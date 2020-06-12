@@ -23,7 +23,7 @@ bot.on('polling_error', msg => console.log(msg));
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
 
 cron.schedule('10 1 * * *', () => {
-  bot.sendMessage(process.env.CHAT_ID, '/pidor@SublimeBot', null, null, true);
+  bot.sendMessage(`${process.env.CHAT_ID}`, '/pidor@SublimeBot', null, null, true);
 }, {
   scheduled: true,
   timezone: process.env.TIMEZONE
