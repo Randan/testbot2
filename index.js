@@ -16,9 +16,4 @@ const logging = require('./middlewares/logging');
 // db.on('error', error => console.log(error));
 // db.once('open', () => console.log('connected to database'));
 
-app.use(express.json());
-app.use(logging);
-
-app.use(router);
-
-app.listen(process.env.APP_PORT, () => console.log('server started'));
+app.listen(APP_PORT, () => console.log(`Server works on ${PORT}`));
