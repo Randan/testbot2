@@ -13,7 +13,7 @@ bot.on('message', msg => {
   from.username === 'Randan'
     && bot.sendMessage(
       chat.id,
-      `Ты пидор, ${from.first_name}!`
+      `Ты пидор, @${from.first_name}!`
     );
 });
 
