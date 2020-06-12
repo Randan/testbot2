@@ -15,7 +15,9 @@ bot.on('message', msg => {
       chat.id,
       `Ты пидор, ${from.first_name}!`
     );
-})
+});
+
+bot.on("polling_error", msg => console.log(msg));
 // bot.onText(/\/help/, msg => {
 //   const { id, first_name, last_name, username } = msg.from;
 
