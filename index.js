@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+const TelegramBot = require("node-telegram-bot-api");
+const bot = new TelegramBot(process.env.BOT_API, { polling: true });
+
 const router = require('./routes/routes');
 const logging = require('./middlewares/logging');
 
