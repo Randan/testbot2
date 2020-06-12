@@ -19,6 +19,6 @@ db.once('open', () => console.log('connected to database'));
 app.use(express.json());
 app.use(logging);
 
-app.use(router);
+app.use(bot);
 
 app.listen(process.env.APP_PORT, () => console.log('server started'));

@@ -7,10 +7,10 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.onText(/\/help/, msg => usersController.help(msg));
 bot.onText(/\/whoAmI/, msg => usersController.whoAmI(msg));
 
-// router.get(
+// bot.get(
 //     '/:id',
 //     getSubscriber,
 //     usersController.getById
 // );
 
-module.exports = router;
+module.exports = bot;
