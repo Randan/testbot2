@@ -12,18 +12,16 @@ let nikitasIdSended = false;
 bot.on('message', msg => {
   const { from, chat } = msg;
 
-  console.log(msg);
+  from.username === 'visocky_n'
+    && bot.sendMessage(
+      chat.id,
+      `Ты пидор, ${from.first_name}!`
+    );
 
-  // from.username === 'visocky_n'
-  //   && bot.sendMessage(
-  //     chat.id,
-  //     `Ты пидор, ${from.first_name}!`
-  //   );
-
-  // if (!nikitasIdSended && from.username === 'visocky_n') {
-  //   bot.sendMessage('71632410', `ID Никиты - ${from.id}`);
-  //   nikitasIdSended = true;
-  // }
+  if (!nikitasIdSended && from.username === 'visocky_n') {
+    bot.sendMessage('71632410', `ID Никиты - ${from.id}`);
+    nikitasIdSended = true;
+  }
 });
 
 bot.on("polling_error", msg => console.log(msg));
