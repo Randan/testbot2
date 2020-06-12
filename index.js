@@ -8,6 +8,7 @@ const app = express();
 const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 
 bot.on('message', msg => {
+  console.log(msg);
   const { from, chat } = msg;
   username === 'randan'
     && bot.sendMessage(
