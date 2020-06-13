@@ -15,7 +15,7 @@ const users = new Set();
 bot.on('message', msg => {
   const { from, chat } = msg;
 
-  // from.id === process.env.ABUSE_TARGET_ID && bot.sendMessage(chat.id, getAbusePhrase(), { disable_notification: true });
+  from.id === process.env.ABUSE_TARGET_ID && bot.sendMessage(chat.id, getAbusePhrase(), { disable_notification: true });
 
   if (!users.has(from.id)) {
     bot.sendMessage(process.env.ROOT_ID, `${from.first_name} ${from.last_name} (@${from.username}) [${from.id}]`, { disable_notification: true });
