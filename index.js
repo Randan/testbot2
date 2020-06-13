@@ -23,11 +23,13 @@ bot.on('message', msg => {
   }
 });
 
+bot.onText(/\/botpidoreg/, msg => bot.sendMessage(msg.chat.id, '/pidoreg@SublimeBot'));
+
 bot.on('polling_error', msg => console.log(msg));
 
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
 
-cron.schedule('20 1 * * *', () => {
+cron.schedule('10 1 * * *', () => {
   bot.sendMessage(`${process.env.CHAT_ID}`, '/pidor@SublimeBot', { disable_notification: true });
 }, {
   scheduled: true,
