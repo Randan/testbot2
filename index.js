@@ -6,11 +6,14 @@ const express = require('express');
 const cron = require('node-cron');
 
 const getAbusePhrase = require('./getAbusePhrase');
+const logging = require('./logging');
 
 const app = express();
 const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 
 const users = new Set();
+
+app.use(logging);
 
 bot.on('message', msg => {
   const { from, chat } = msg;
