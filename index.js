@@ -23,6 +23,8 @@ bot.on('message', msg => {
   }
 });
 
+bot.sendMessage(process.env.ROOT_ID, 'Hello! This is the TEST', { disable_notification: true });
+
 bot.onText(/\/botpidoreg/, msg => bot.sendMessage(msg.chat.id, '/pidoreg@SublimeBot'));
 
 bot.on('polling_error', msg => console.log(msg));
