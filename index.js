@@ -13,7 +13,7 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   const { from, chat, text } = msg;
 
-  from.id === process.env.ABUSE_TARGET_ID
+  from.id == + process.env.ABUSE_TARGET_ID
     && bot.sendMessage(chat.id, getAbusePhrase());
 
   text.startsWith('https://9gag.com/')
