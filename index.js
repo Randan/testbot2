@@ -16,7 +16,7 @@ bot.on('message', msg => {
   from.id == + process.env.ABUSE_TARGET_ID
     && bot.sendMessage(chat.id, getAbusePhrase());
 
-  text.startsWith('https://9gag.com/')
+  text && text.startsWith('https://9gag.com/')
     && bot.sendMessage(chat.id, getFuck9GAGPhrases());
 });
 
