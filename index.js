@@ -13,6 +13,8 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   const { from, chat, text } = msg;
 
+  console.log(msg);
+
   from.id === process.env.ABUSE_TARGET_ID
     && bot.sendMessage(chat.id, getAbusePhrase());
 
