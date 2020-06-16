@@ -6,7 +6,6 @@ const express = require('express');
 
 const getAbusePhrase = require('./getAbusePhrase');
 const getFuck9GAGPhrases = require('./getFuck9GAGPhrases');
-const logging = require('./logging');
 
 const app = express();
 const bot = new TelegramBot(process.env.BOT_API, { polling: true });
