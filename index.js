@@ -13,8 +13,6 @@ const bot = new TelegramBot(process.env.BOT_API, { polling: true });
 bot.on('message', msg => {
   const { from, chat, text } = msg;
 
-  console.log(msg);
-
   from.id === process.env.ABUSE_TARGET_ID
     && bot.sendMessage(chat.id, getAbusePhrase());
 
@@ -22,8 +20,32 @@ bot.on('message', msg => {
     && bot.sendMessage(chat.id, getFuck9GAGPhrases());
 });
 
-bot.sendMessage(process.env.ROOT_ID, 'Hello! This is the TEST', { disable_notification: true });
+bot.sendMessage(process.env.ROOT_ID, "Hello! I'm started", { disable_notification: true });
 
 bot.on('polling_error', msg => console.log(msg));
 
 app.listen(process.env.APP_PORT, () => console.log(`Server works on ${process.env.APP_PORT}`));
+
+/**
+ *
+  {
+    message_id: number,
+    from: {
+      id: number,
+      is_bot: boolean,
+      first_name: string,
+      last_name: string,
+      username: string,
+      language_code: 'uk'
+    },
+    chat: {
+      id: number,
+      first_name: string,
+      last_name: string,
+      username: string,
+      type: 'private'
+    },
+    date: 1592311566,
+    text: 'hello'
+  }
+ */
