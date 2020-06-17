@@ -19,4 +19,4 @@ bot.on('message', msg => {
 bot.onText(/\/test/, () => controller.sendTestMessage(process.env.ROOT_ID));
 bot.onText(/\/tc/, (msg) => controller.sendToChatMessage(msg, process.env.CHAT_ID));
 
-bot.on('polling_error', msg => controller.sendTestMessage(msg, process.env.ROOT_ID));
+bot.on('polling_error', msg => controller.sendError(msg, process.env.ROOT_ID));
