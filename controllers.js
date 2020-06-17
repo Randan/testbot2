@@ -16,6 +16,8 @@ module.exports = {
 
   sendAwakeMessage: chatId => bot.sendMessage(chatId, "Hello! I'm awake", { ...messagesOptions }),
 
+  sendToChatMessage: (msg, chatId) => bot.sendMessage(chatId, msg.text.substr(msg.entities[0].length + 1), { ...messagesOptions }),
+
   sendError: (msg, chatId) => {
     console.log(msg);
     bot.sendMessage(chatId, JSON.stringify(msg));
