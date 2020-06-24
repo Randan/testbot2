@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', function(req, res) {
-  res.send('This is a Zhossko Telegram Bot');
+  res.status('200').send('This is a Zhossko Telegram Bot');
 });
 
 require('./events')
